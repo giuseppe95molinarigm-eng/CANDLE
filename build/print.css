@@ -1,0 +1,221 @@
+/* The First-Try Edible Candle Cookbook — print interior
+   Trim 8.5 x 11 in, bleed 0.125 in (outside, top, bottom) => PDF page 8.625 x 11.25 in (KDP spec)
+   Palette taken from the cover: deep forest green, antique gold, warm cream. */
+
+@font-face { font-family: "Playfair"; src: url(fonts/PlayfairDisplay-400.ttf); font-weight: 400; }
+@font-face { font-family: "Playfair"; src: url(fonts/PlayfairDisplay-700.ttf); font-weight: 700; }
+@font-face { font-family: "Playfair"; src: url(fonts/PlayfairDisplay-900.ttf); font-weight: 900; }
+@font-face { font-family: "Playfair"; src: url(fonts/PlayfairDisplay-Italic-400.ttf); font-style: italic; }
+@font-face { font-family: "Cinzel"; src: url(fonts/Cinzel-600.ttf); font-weight: 600; }
+@font-face { font-family: "Cinzel"; src: url(fonts/Cinzel-700.ttf); font-weight: 700; }
+@font-face { font-family: "Body"; src: url(fonts/SourceSerif4-400.ttf); font-weight: 400; }
+@font-face { font-family: "Body"; src: url(fonts/SourceSerif4-600.ttf); font-weight: 600; }
+@font-face { font-family: "Body"; src: url(fonts/SourceSerif4-700.ttf); font-weight: 700; }
+@font-face { font-family: "Body"; src: url(fonts/SourceSerif4-Italic-400.ttf); font-style: italic; font-weight: 400; }
+@font-face { font-family: "Body"; src: url(fonts/SourceSerif4-Italic-600.ttf); font-style: italic; font-weight: 600; }
+
+:root {
+  --green-900: #0c2219;
+  --green-800: #123327;
+  --green-700: #1d4636;
+  --gold: #a87a26;        /* gold for text on white (contrast-safe) */
+  --gold-light: #d9b25f;  /* gold on dark green */
+  --gold-pale: #ead7a6;
+  --cream: #fbf4e6;
+  --cream-2: #f5ead2;
+  --ink: #2b2420;
+  --brown: #5a3410;
+}
+
+/* ------------------------------------------------------------------ pages */
+@page {
+  size: 8.625in 11.25in;
+  marks: none;
+}
+@page :right {
+  margin: 0.825in 0.725in 0.875in 0.875in;   /* top, outside(+bleed), bottom, gutter */
+  @top-right { content: string(chapter); font: 600 7.5pt "Cinzel"; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; vertical-align: bottom; padding-bottom: 0.18in; }
+  @top-left { content: string(rtitle, first-except); font: italic 8pt "Body"; color: #8a7a68; vertical-align: bottom; padding-bottom: 0.18in; }
+  @bottom-right { content: counter(page); font: 700 9pt "Playfair"; color: var(--green-700); vertical-align: top; padding-top: 0.2in; }
+  @bottom-left { content: string(cont, last); font: italic 8pt "Body"; color: var(--gold); vertical-align: top; padding-top: 0.22in; }
+}
+@page :left {
+  margin: 0.825in 0.875in 0.875in 0.725in;
+  @top-left { content: "The First-Try Edible Candle Cookbook"; font: 600 7.5pt "Cinzel"; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; vertical-align: bottom; padding-bottom: 0.18in; }
+  @top-right { content: string(rtitle, first-except); font: italic 8pt "Body"; color: #8a7a68; vertical-align: bottom; padding-bottom: 0.18in; }
+  @bottom-left { content: counter(page); font: 700 9pt "Playfair"; color: var(--green-700); vertical-align: top; padding-top: 0.2in; }
+  @bottom-right { content: string(cont, last); font: italic 8pt "Body"; color: var(--gold); vertical-align: top; padding-top: 0.22in; }
+}
+@page :blank {
+  @top-left { content: none; } @top-right { content: none; }
+  @bottom-left { content: none; } @bottom-right { content: none; }
+}
+@page opener {
+  margin: 0;
+  background: var(--green-900);
+  @top-left { content: none; } @top-right { content: none; }
+  @bottom-left { content: none; } @bottom-right { content: none; }
+}
+@page front {
+  @top-left { content: none; } @top-right { content: none; }
+  @bottom-left { content: none; } @bottom-right { content: none; }
+}
+
+html { font-family: "Body", serif; font-size: 9.8pt; line-height: 1.42; color: var(--ink); }
+body { margin: 0; }
+.string-book { display: none; }
+.chapter-string { string-set: chapter attr(data-chapter); height: 0; }
+p { margin: 0 0 0.55em; orphans: 3; widows: 3; hyphens: manual; }
+strong { font-weight: 700; color: #1f1a17; }
+em { font-style: italic; }
+
+/* ------------------------------------------------------------------ openers */
+section.opener {
+  page: opener;
+  break-before: right;
+  break-after: page;
+  height: 11.25in;
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(46, 96, 70, 0.55) 0%, rgba(12, 34, 25, 0) 62%),
+    linear-gradient(180deg, #0f2a1f 0%, #0b1f17 100%);
+  color: var(--cream);
+  position: relative;
+}
+section.opener .op-inner {
+  /* recto page: gutter on the left (0.875in), bleed on the right */
+  position: absolute; left: 1.25in; right: 1.1in; top: 2.6in;
+  text-align: center;
+}
+section.opener::before {
+  content: ""; position: absolute; left: 0.6in; right: 0.725in; top: 0.6in; bottom: 0.6in;
+  border: 0.75pt solid rgba(217, 178, 95, 0.55);
+}
+section.opener::after {
+  content: ""; position: absolute; left: 0.68in; right: 0.805in; top: 0.68in; bottom: 0.68in;
+  border: 0.4pt solid rgba(217, 178, 95, 0.3);
+}
+.op-label { font: 700 13pt "Cinzel"; letter-spacing: 0.42em; color: var(--gold-light); text-transform: uppercase; margin-bottom: 0.18in; }
+.op-title { font: 900 38pt/1.08 "Playfair"; color: var(--gold-light); margin: 0.16in 0; letter-spacing: 0.01em; }
+.op-rule { display: flex; align-items: center; justify-content: center; gap: 10pt; color: var(--gold-light); }
+.op-rule span { display: block; width: 1.25in; border-top: 0.8pt solid var(--gold-light); }
+.op-rule i, .tp-rule i { display: block; width: 5pt; height: 5pt; background: currentColor; transform: rotate(45deg); }
+.op-intro { margin: 0.4in auto 0; max-width: 5.2in; font: italic 11.5pt/1.6 "Body"; color: #efe6d2; }
+.op-intro p { margin-bottom: 0.7em; }
+.op-intro strong { color: var(--gold-pale); }
+.op-range { margin-top: 0.35in; font: 600 9pt "Cinzel"; letter-spacing: 0.3em; color: var(--gold-light); text-transform: uppercase; }
+
+/* ------------------------------------------------------------------ title & copyright */
+section.title-page { page: front; break-after: page; text-align: center; padding-top: 2.1in; }
+.tp-title { margin: 0.25in 0; color: var(--green-800); }
+.tp-title span { display: block; }
+.tp-small { font: 700 20pt "Cinzel"; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+.tp-big { font: 900 50pt/1.05 "Playfair"; text-transform: uppercase; letter-spacing: 0.02em; margin: 0.08in 0; }
+.tp-small2 { font: 700 22pt "Cinzel"; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); }
+.tp-rule { display: flex; align-items: center; justify-content: center; gap: 10pt; color: var(--gold); }
+.tp-rule span { display: block; width: 1.6in; border-top: 0.8pt solid var(--gold); }
+.tp-sub { margin: 0.45in auto 0; max-width: 5.4in; font: italic 13pt/1.5 "Playfair"; color: var(--ink); }
+.tp-author { margin-top: 1.6in; font: 700 13pt "Cinzel"; letter-spacing: 0.45em; color: var(--green-800); text-transform: uppercase; }
+section.copyright-page { page: front; break-after: right; padding-top: 5.2in; font-size: 8.5pt; line-height: 1.5; color: #4a403a; }
+section.copyright-page p { margin-bottom: 0.8em; }
+
+/* ------------------------------------------------------------------ contents */
+section.contents { page: front; break-before: right; }
+.sec-title { font: 900 28pt/1.1 "Playfair"; color: var(--green-800); margin: 0 0 0.12in; padding-bottom: 0.12in; border-bottom: 1pt solid var(--gold); string-set: chapter content(); }
+section.contents .sec-title { string-set: none; }
+.toc { margin-top: 0.2in; }
+.toc a { color: inherit; text-decoration: none; }
+.toc-part { font: 700 12pt "Playfair"; color: var(--green-800); margin: 0.16in 0 0.04in; break-after: avoid; }
+.toc-part a::after, .toc-entry a::after { content: leader(dotted) " " target-counter(attr(href), page); color: var(--gold); }
+.toc-entry { font-size: 10pt; margin: 0.02in 0 0.02in 0.18in; }
+.toc-range { font: italic 8.5pt "Body"; color: #8a7a68; }
+
+/* ------------------------------------------------------------------ flow sections */
+section.plain-section { break-before: right; }
+.flow-section, .chapter-body { }
+h2 { font: 700 18pt/1.2 "Playfair"; color: var(--green-800); margin: 0.28in 0 0.08in; break-after: avoid; }
+.flow-section > h2, section.plain-section > h2 { padding-top: 0.06in; border-top: 0.6pt solid var(--gold-pale); }
+h3 { font: 700 10.5pt "Cinzel"; letter-spacing: 0.12em; color: var(--gold); margin: 0.2in 0 0.06in; break-after: avoid; text-transform: uppercase; }
+ol.flow, ul.flow { margin: 0.02in 0 0.12in; padding-left: 0.28in; }
+ol.flow li, ul.flow li { margin-bottom: 0.35em; padding-left: 0.04in; }
+ul.flow li::marker { color: var(--gold); }
+ol.flow li::marker { color: var(--gold); font-weight: 700; font-family: "Playfair"; }
+
+aside.callout {
+  margin: 0.14in 0; padding: 0.1in 0.16in 0.1in 0.18in;
+  background: var(--cream); border-left: 3pt solid var(--gold);
+  break-inside: avoid; font-size: 9.5pt;
+}
+.callout-label { font: 700 8pt "Cinzel"; letter-spacing: 0.14em; color: var(--gold); margin-right: 0.3em; }
+
+table.data { width: 100%; border-collapse: collapse; margin: 0.1in 0 0.16in; font-size: 8.6pt; line-height: 1.35; }
+table.data th { background: var(--green-800); color: var(--gold-pale); font: 700 7.6pt "Cinzel"; letter-spacing: 0.08em; text-align: left; padding: 5pt 6pt; vertical-align: bottom; }
+table.data td { padding: 4.5pt 6pt; border-bottom: 0.5pt solid #e3d6bb; vertical-align: top; }
+table.data tbody tr:nth-child(even) td { background: #fcf8ef; }
+table.data td:first-child { font-weight: 600; }
+table.data tr { break-inside: avoid; }
+table.data thead { display: table-header-group; }
+
+/* ------------------------------------------------------------------ recipes */
+article.recipe { break-before: page; }
+.rt-set { string-set: rtitle attr(data-title), cont "Continued on next page \2192"; height: 0; }
+.rt-end { string-set: cont ""; height: 0; }
+.op-reset { string-set: rtitle "", cont ""; height: 0; }
+
+.recipe-head { text-align: left; margin-bottom: 0.08in; }
+.kicker { font: 700 8.5pt "Cinzel"; letter-spacing: 0.32em; color: var(--gold); }
+.recipe-title { font: 900 25pt/1.1 "Playfair"; color: var(--green-800); margin: 0.03in 0 0; border: none; padding: 0; }
+.diets { float: right; margin-top: 0.02in; letter-spacing: 0; }
+.diet { display: inline-block; font: 700 7pt "Cinzel"; color: var(--green-900); background: var(--gold-light); padding: 0 4pt; margin-left: 3pt; border-radius: 1.5pt; }
+
+.meta {
+  background: var(--green-800); color: #f1e8d4;
+  padding: 0.06in 0.1in; margin: 0 0 0.12in;
+  font: 600 7.6pt "Body"; letter-spacing: 0.01em; line-height: 1.55; text-align: center;
+}
+.meta .m { white-space: nowrap; }
+.meta .m + .m::before { content: "\2022"; color: var(--gold-light); margin: 0 0.55em; }
+
+.intro p { font: italic 10pt/1.45 "Body"; color: #3d332d; margin-bottom: 0.12in; }
+
+.row { margin-bottom: 0.12in; }
+.row::after { content: ""; display: block; clear: both; }
+figure.hero { float: right; width: 4.4in; height: 3.3in; margin: 0 0 0.06in 0.22in; border-bottom: 2.5pt solid var(--gold); }
+figure.hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; display: block; }
+.v-m figure.hero { width: 4.0in; height: 2.85in; }
+.v-s figure.hero { width: 3.6in; height: 2.45in; }
+section.ingredients {
+  background: var(--cream); border-top: 2.5pt solid var(--gold);
+  padding: 0.1in 0.14in 0.08in; min-height: 3.1in; float: left; width: 2.1in;
+}
+.v-m section.ingredients { width: 2.5in; min-height: 2.65in; }
+.v-s section.ingredients { width: 2.9in; min-height: 2.25in;
+}
+h3.label { font: 700 9pt "Cinzel"; letter-spacing: 0.22em; color: var(--green-800); margin: 0 0 0.06in; padding-bottom: 0.04in; border-bottom: 0.5pt solid var(--gold); text-transform: uppercase; }
+ul.ing { list-style: none; margin: 0; padding: 0; font-size: 9pt; line-height: 1.34; }
+ul.ing li { padding: 0.03in 0; border-bottom: 0.4pt dotted #d8c79f; }
+ul.ing li:last-child { border-bottom: none; }
+h4.ing-sub { font: italic 600 9pt "Body"; color: var(--gold); margin: 0.07in 0 0.01in; }
+
+section.method { clear: both; }
+section.method ol.steps { column-count: 2; column-gap: 0.32in; }
+ol.steps { list-style: none; counter-reset: step; margin: 0; padding: 0; }
+ol.steps li { counter-increment: step; position: relative; padding-left: 0.28in; margin-bottom: 0.07in; font-size: 9.8pt; line-height: 1.42; break-inside: avoid; }
+ol.steps li::before {
+  content: counter(step); position: absolute; left: 0; top: 0.01in;
+  font: 700 13pt/1 "Playfair"; color: var(--gold);
+}
+
+aside.tip {
+  margin: 0.08in 0 0; padding: 0.07in 0.14in 0.07in 0.16in;
+  background: var(--cream); border-left: 3pt solid var(--gold);
+  font-size: 9.4pt; line-height: 1.42; break-inside: avoid;
+}
+aside.tip .callout-label { color: var(--gold); }
+
+dl.serve { display: table; width: 100%; table-layout: fixed; border-collapse: collapse; margin: 0.12in 0 0; break-inside: avoid; clear: both; }
+.serve-row { display: table-cell; vertical-align: top; padding: 0.06in 0.12in 0; border-top: 1.5pt solid var(--green-800); font-size: 8.6pt; line-height: 1.34; }
+.serve-row + .serve-row { border-left: 0.5pt solid var(--gold-pale); }
+.serve-row:first-child { padding-left: 0; }
+.serve-row:last-child { padding-right: 0; }
+.serve-row dt { display: block; font: 700 7.8pt "Cinzel"; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.03in; }
+.serve-row dd { display: block; margin: 0; }
