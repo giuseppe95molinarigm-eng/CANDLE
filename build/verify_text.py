@@ -44,7 +44,7 @@ def check(name, text):
         # labels the layout splits off (e.g. "Pair:" rows, "RECIPE 001", "Recipes 1–15") are checked piecewise
         if key in flat:
             continue
-        pieces = [re.sub(r'\s+', '', x).lower() for x in re.split(r'(?:Pair:|Serve:|Make ahead:|\s{2,}|·)', p) if x.strip()]
+        pieces = [re.sub(r'\s+', '', x).lower() for x in re.split(r'(?:Pair:|Serve:|Make ahead:|\s{2,}|·|\s(?=(?:V|GF|DF|NF)(?:\s|$)))', p) if x.strip()]
         if pieces and all(x in flat for x in pieces):
             continue
         miss.append(p)
