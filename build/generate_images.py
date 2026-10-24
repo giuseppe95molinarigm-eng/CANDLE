@@ -24,7 +24,8 @@ SAFETY = (
     "on a heatproof plate, board, cake stand or bread bowl; no paper napkins, paper decorations, dried flowers, "
     "curtains or other flammable items near the flame; herbs and garnishes never touch the flame; no people, "
     "hands, children or pets. The edible candle is the ONLY candle and the ONLY flame in the whole picture: no other "
-    "candles, tea lights, tapers or candle holders anywhere, not even blurred in the background."
+    "candles, tea lights, tapers, lanterns, votive glasses or candle holders anywhere, not even blurred in the background; any background glow comes only from soft out-of-focus room light. "
+    "The edible candle is unmolded and freestanding, standing directly on its plate or board: it is NOT inside a glass, jar, cup or any container."
 )
 NEGATIVE = (
     "Absolutely no text, letters, numbers, labels, logos, watermarks, borders or frames anywhere in the image."
