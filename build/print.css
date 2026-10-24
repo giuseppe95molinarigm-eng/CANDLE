@@ -130,7 +130,7 @@ section.contents .sec-title { string-set: none; }
 .toc-range { font: italic 8.5pt "Body"; color: #8a7a68; }
 
 /* ------------------------------------------------------------------ flow sections */
-section.plain-section { break-before: right; }
+section.plain-section { break-before: page; }
 .flow-section, .chapter-body { }
 h2 { font: 700 18pt/1.2 "Playfair"; color: var(--green-800); margin: 0.28in 0 0.08in; break-after: avoid; }
 .flow-section > h2, section.plain-section > h2 { padding-top: 0.06in; border-top: 0.6pt solid var(--gold-pale); }
@@ -219,3 +219,37 @@ dl.serve { display: table; width: 100%; table-layout: fixed; border-collapse: co
 .serve-row:last-child { padding-right: 0; }
 .serve-row dt { display: block; font: 700 7.8pt "Cinzel"; letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.03in; }
 .serve-row dd { display: block; margin: 0; }
+
+/* ------------------------------------------------------------------ breads, plans, reference */
+.bread { break-inside: avoid; margin-top: 0.2in; }
+.bread + .bread, h2 + .bread { }
+h2.bread-title, h2.plan-title { border-top: none; padding-top: 0; font: 900 19pt/1.15 "Playfair"; }
+p.sub-meta { font: italic 9.4pt "Body"; color: var(--gold); margin: 0 0 0.08in; }
+ul.bread-ing { list-style: none; padding: 0.08in 0.16in; margin: 0.06in 0 0.12in; background: var(--cream); border-top: 2pt solid var(--gold); column-count: 2; column-gap: 0.3in; font-size: 9.2pt; }
+ul.bread-ing li { margin: 0; padding: 0.03in 0; break-inside: avoid; }
+.plan { break-before: page; }
+h4.minor { font: 700 9pt "Cinzel"; letter-spacing: 0.18em; color: var(--green-800); text-transform: uppercase; margin: 0.16in 0 0.05in; padding-bottom: 0.03in; border-bottom: 0.5pt solid var(--gold); break-after: avoid; }
+p.signoff { text-align: right; font-style: italic; margin: 0; }
+p.signoff + p.signoff { font: 700 13pt "Playfair"; font-style: normal; color: var(--green-800); margin-top: 0.05in; }
+
+table.finder { font-size: 7.6pt; line-height: 1.25; }
+table.finder td, table.finder th { padding: 2.2pt 5pt; }
+table.finder td:first-child { width: 0.35in; color: var(--gold); font-weight: 700; }
+table.finder td:nth-child(n+4), table.finder th:nth-child(n+4) { text-align: center; width: 0.38in; }
+table.finder td:nth-child(2) { font-weight: 600; }
+
+.index-cols { column-count: 2; column-gap: 0.35in; font-size: 8.8pt; line-height: 1.32; }
+.ix-letter { font: 900 14pt "Playfair"; color: var(--gold); margin: 0.1in 0 0.02in; break-after: avoid; }
+.ix { break-inside: avoid; margin: 0 0 0.03in; }
+.ix { padding-left: 0.15in; text-indent: -0.15in; }
+.ix a { color: inherit; text-decoration: none; }
+.ix-ref { color: #8a7a68; font-size: 7.8pt; white-space: nowrap; margin-left: 0.35em; }
+.ix a::after { content: " \00B7  p. " target-counter(attr(href), page); color: var(--gold); font-size: 7.8pt; white-space: nowrap; margin-left: 0.25em; }
+
+/* long recipes: photo + ingredients on the first page, method on the second */
+.v-2p figure.hero { float: none; width: 100%; height: 4.5in; margin: 0 0 0.14in; }
+.v-2p section.ingredients { float: none; width: auto; min-height: 0; }
+.v-2p section.ingredients ul.ing { column-count: 2; column-gap: 0.3in; }
+.v-2p section.ingredients ul.ing li { break-inside: avoid; }
+.v-2p section.method { break-before: page; }
+.plan.first { break-before: auto; margin-top: 0.25in; }

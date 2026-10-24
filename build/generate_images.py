@@ -14,16 +14,17 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STYLE = (
     "Professional editorial food photography for a premium cookbook, shot with a full-frame camera and 85mm lens, "
     "shallow depth of field, soft creamy bokeh, rich warm color grading. Overall palette and mood inspired by the "
-    "cookbook cover: deep forest-green background tones, warm golden candlelight glow, rustic dark wood or slate, "
+    "cookbook cover: deep forest-green background tones, warm golden glow, rustic dark wood or slate, "
     "appetizing and realistic textures. The edible candle is the clear hero, sharp and centered, fully visible from "
-    "base to flame with comfortable space around it. Landscape composition."
+    "base to flame, centered, with comfortable space above the flame and around it. Landscape 4:3 composition."
 )
 SAFETY = (
     "Safety details that must be respected: one single plain natural cotton wick in the center of the candle, "
     "trimmed short, with one small calm steady flame (no tall or smoky flame, no metal wick tab); the candle stands "
     "on a heatproof plate, board, cake stand or bread bowl; no paper napkins, paper decorations, dried flowers, "
     "curtains or other flammable items near the flame; herbs and garnishes never touch the flame; no people, "
-    "hands, children or pets; no ordinary wax candles."
+    "hands, children or pets. The edible candle is the ONLY candle and the ONLY flame in the whole picture: no other "
+    "candles, tea lights, tapers or candle holders anywhere, not even blurred in the background."
 )
 NEGATIVE = (
     "Absolutely no text, letters, numbers, labels, logos, watermarks, borders or frames anywhere in the image."
@@ -79,7 +80,7 @@ MODELS = {
     'fluxultra': ('black-forest-labs/flux-1.1-pro-ultra', lambda p, ref: {
         'prompt': p, 'aspect_ratio': '16:9', 'output_format': 'png', 'raw': False, 'safety_tolerance': 2}),
     'nanobananapro': ('google/nano-banana-pro', lambda p, ref: {
-        'prompt': p, 'resolution': '2K', 'aspect_ratio': '16:9', 'output_format': 'png',
+        'prompt': p, 'resolution': '2K', 'aspect_ratio': '4:3', 'output_format': 'png',
         'image_input': [ref] if ref else []}),
 }
 USES_REF = {'seedream4': True, 'fluxultra': False, 'nanobananapro': True}

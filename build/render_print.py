@@ -67,17 +67,21 @@ def table_html(t, cls='data'):
     return ''.join(out)
 
 
-def blocks_html(items, ctx):
+def blocks_html(items, ctx, section=''):
     """Generic flow content (front matter, parts, plans, references)."""
     out = []
     i = 0
+    group = None          # open wrapper for a bread recipe or a party plan
+    after_heading = False
     while i < len(items):
         b = items[i]
         if b.get('type') == 'table':
-            out.append(table_html(b))
+            out.append(table_html(b, 'data finder' if section == 'Recipe Finder' else 'data'))
             i += 1
             continue
         if b.get('type') == 'recipe':
+            if group:
+                out.append('</div>'); group = None
             out.append(recipe_html(b, ctx))
             i += 1
             continue
@@ -87,23 +91,63 @@ def blocks_html(items, ctx):
             while i < len(items) and items[i].get('list') == kind and items[i].get('num') == num:
                 lis.append('<li>' + runs_html(items[i]['runs']) + '</li>')
                 i += 1
-            out.append(f'<{kind} class="flow">' + ''.join(lis) + f'</{kind}>')
+            cls = 'flow'
+            if group == 'bread' and kind == 'ul':
+                cls = 'flow bread-ing'
+            out.append(f'<{kind} class="{cls}">' + ''.join(lis) + f'</{kind}>')
+            after_heading = False
             continue
         st = b.get('style')
-        if not b.get('text', '').strip():
+        text = b.get('text', '')
+        if not text.strip():
             i += 1
             continue
         if st == 'Heading2':
-            hid = ctx.anchor(b['text'])
-            out.append(f'<h2 id="{hid}">{runs_html_plain(b)}</h2>')
-        elif st == 'Heading3':
-            out.append(f'<h3>{runs_html_plain(b)}</h3>')
+            if group:
+                out.append('</div>'); group = None
+            hid = ctx.anchor(text)
+            if re.match(r'B\d\. ', text):
+                group = 'bread'
+                out.append(f'<div class="bread"><h2 class="bread-title" id="{hid}">{esc(text)}</h2>')
+            elif re.match(r'Plan \d+: ', text):
+                first = 'plan' not in ''.join(out)
+                group = 'plan'
+                out.append(f'<div class="plan{" first" if first else ""}"><h2 class="plan-title" id="{hid}">{esc(text)}</h2>')
+            else:
+                out.append(f'<h2 id="{hid}">{esc(text)}</h2>')
+            after_heading = True
+            i += 1
+            continue
+        if st == 'Heading3':
+            out.append(f'<h3>{esc(text)}</h3>')
         elif b.get('shd') == 'FBF1E2':
             out.append(callout(b))
+        elif section == 'Recipe Index (A–Z)':
+            if '\t' in text:
+                name, ref = text.split('\t', 1)
+                n = int(re.search(r'\d+', ref).group())
+                out.append(f'<div class="ix"><a href="#recipe-{n:03d}">{esc(name)}<span class="ix-ref">{esc(ref)}</span></a></div>')
+            else:
+                out.append(f'<div class="ix-letter">{esc(text)}</div>')
+        elif after_heading and group:
+            out.append(f'<p class="sub-meta">{runs_html(b["runs"])}</p>')
+        elif b['runs'] and all(x[1] for x in b['runs']) and len(text) < 40:
+            out.append(f'<h4 class="minor">{esc(text)}</h4>')
         else:
             out.append(f'<p>{runs_html(b["runs"])}</p>')
+        after_heading = False
         i += 1
-    return '\n'.join(out)
+    if group:
+        out.append('</div>')
+    html_out = '\n'.join(out)
+    if section == 'A Note from Margot':
+        # sign-off: the last two paragraphs of the letter
+        parts = html_out.rsplit('<p>', 2)
+        if len(parts) == 3:
+            html_out = parts[0] + '<p class="signoff">' + parts[1] + '<p class="signoff">' + parts[2]
+    if section == 'Recipe Index (A–Z)':
+        html_out = '<div class="index-cols">' + html_out + '</div>'
+    return html_out
 
 
 def runs_html_plain(b):
@@ -160,21 +204,6 @@ def footer_html(p):
     return ''.join(out)
 
 
-def _lines(texts, cpl):
-    return sum(-(-len(t) // cpl) for t in texts)
-
-
-def tip_goes_left(r):
-    """Place the tip box in whichever column keeps the two columns most even."""
-    ing = [p['text'] for c in r['ingredients'][0]['rows'][0] for p in c if p['text'].strip()]
-    left = _lines(ing, 36) * 1.0 + len(ing) * 0.45 + 2
-    right = _lines([m['text'] for m in r['method']], 74) * 1.05 + len(r['method']) * 0.5 + 2
-    tip = ' '.join(t['text'] for t in r['tips'])
-    as_left = max(left + _lines([tip], 33) + 2, right)
-    as_right = max(left, right + _lines([tip], 66) + 2)
-    return as_left <= as_right
-
-
 def recipe_html(r, ctx):
     num = r['num']
     parts, diet = split_meta(r['meta'])
@@ -207,9 +236,9 @@ def recipe_html(r, ctx):
 
 # ---------------------------------------------------------------- page furniture
 
-def opener(kind, label, title, intro_html, extra=''):
+def opener(kind, label, title, intro_html, extra='', chapter_string=''):
     return f'''
-<section class="opener {kind}"><div class="op-reset"></div>
+<section class="opener {kind}"><div class="op-reset"></div>{chapter_string}
   <div class="op-inner">
     <div class="op-label">{esc(label)}</div>
     <div class="op-rule"><span></span><i></i><span></span></div>
@@ -288,21 +317,21 @@ def section_html(book, s, ctx, recipe_filter=None):
     if m:
         # intro paragraphs (before first heading) go on the opener
         intro, rest = split_intro(items)
-        return (f'<div class="chapter-string" data-chapter="{esc(t)}"></div>' +
-                opener('part', f'Part {m.group(1)}', m.group(2), intro) +
-                f'<div class="flow-section">{blocks_html(rest, ctx)}</div>')
+        return (opener('part', f'Part {m.group(1)}', m.group(2), intro,
+                       chapter_string=f'<div class="chapter-string" data-chapter="{esc(m.group(2))}"></div>') +
+                f'<div class="flow-section">{blocks_html(rest, ctx, t)}</div>')
     m = re.match(r'Chapter (\d+): (.*)', t)
     if m:
         intro, rest = split_intro(items)
         nums = chapter_range(book, t)
         rng = f'<div class="op-range">Recipes {nums[0]}&#8211;{nums[-1]}</div>' if nums else ''
-        rng += f'<div class="chapter-string" data-chapter="{esc(m.group(2))}"></div>'
-        return (opener('chapter', f'Chapter {m.group(1)}', m.group(2), intro, rng) +
-                (f'<div class="chapter-body">{blocks_html(rest, ctx)}</div>' if rest else ''))
+        return (opener('chapter', f'Chapter {m.group(1)}', m.group(2), intro, rng,
+                       f'<div class="chapter-string" data-chapter="{esc(m.group(2))}"></div>') +
+                (f'<div class="chapter-body">{blocks_html(rest, ctx, t)}</div>' if rest else ''))
     if t == 'Contents':
         return contents_html(book, s)
     return (f'<section class="plain-section" id="{slug(t)}"><div class="chapter-string" data-chapter="{esc(t)}"></div>'
-            f'<h1 class="sec-title">{esc(t)}</h1>{blocks_html(items, ctx)}</section>')
+            f'<h1 class="sec-title">{esc(t)}</h1>{blocks_html(items, ctx, t)}</section>')
 
 
 def split_intro(items):
