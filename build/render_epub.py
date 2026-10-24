@@ -14,8 +14,8 @@ esc = R.esc
 runs_html = R.runs_html
 TITLE = 'The First-Try Edible Candle Cookbook'
 AUTHOR = 'Margot Ellery'
-IMG_W = 1000          # px; keeps the file small for Kindle delivery while sharp on screens
-IMG_Q = 80
+IMG_W = 800           # px; keeps the file small (Kindle 70% royalty delivery fee is per MB) while sharp on e-readers
+IMG_Q = 78
 
 CSS = """
 @charset "utf-8";
@@ -30,9 +30,12 @@ h2 { font-size: 1.35em; color: #123327; margin: 1.4em 0 0.4em; }
 h3 { font-size: 0.95em; letter-spacing: 0.12em; text-transform: uppercase; color: #8a6418; margin: 1.2em 0 0.4em; }
 h4 { font-size: 0.9em; letter-spacing: 0.1em; text-transform: uppercase; color: #123327; margin: 1em 0 0.3em; }
 p { margin: 0 0 0.6em; text-indent: 0; }
-.callout, .tip { background-color: #fbf4e6; border-left: 4px solid #b8862e; padding: 0.5em 0.8em; margin: 1em 0; }
+.callout, .tip { background-color: #fbf4e6; color: #2b2420; border-left: 4px solid #b8862e; padding: 0.5em 0.8em; margin: 1em 0; }
 .callout-label { font-weight: bold; color: #8a6418; letter-spacing: 0.08em; font-size: 0.85em; }
-table { border-collapse: collapse; width: 100%; font-size: 0.85em; margin: 0.8em 0; }
+table { border-collapse: collapse; width: 100%; font-size: 0.75em; margin: 0.8em 0; }
+td, th { word-wrap: break-word; overflow-wrap: break-word; hyphens: auto; }
+.label-p { font-weight: bold; letter-spacing: 0.08em; text-transform: uppercase; color: #123327; margin: 1em 0 0.3em; font-size: 0.9em; }
+a.xref { color: inherit; }
 th { background-color: #123327; color: #f5ead2; text-align: left; padding: 0.3em; }
 td { border-bottom: 1px solid #e3d6bb; padding: 0.3em; vertical-align: top; }
 .recipe { page-break-before: always; break-before: page; }
@@ -137,6 +140,26 @@ def table(t):
     return ''.join(out)
 
 
+def finder_table(t):
+    """Recipe Finder for small screens: the four check-mark diet columns become one 'Diet' column."""
+    head = [' '.join(p['text'] for p in c).strip() for c in t['rows'][0]]
+    out = ['<table><tr><th>' + '</th><th>'.join(esc(h) for h in head[:3]) + '</th><th>Diet</th></tr>']
+    for row in t['rows'][1:]:
+        c = [' '.join(p['text'] for p in cell).strip() for cell in row]
+        diets = ' · '.join(h for h, v in zip(head[3:], c[3:]) if v)
+        n = int(c[0])
+        out.append(f'<tr><td>{esc(c[0])}</td><td><a class="xref" href="@@recipe-{n:03d}@@">{esc(c[1])}</a></td><td>{esc(c[2])}</td><td>{esc(diets)}</td></tr>')
+    out.append('</table>')
+    return ''.join(out)
+
+
+def link_refs(body):
+    """Turn '(recipe 132)' and '(Bread B3)' cross-references into links (text unchanged)."""
+    body = re.sub(r'\((recipe (\d+))\)', lambda m: f'(<a class="xref" href="@@recipe-{int(m.group(2)):03d}@@">{m.group(1)}</a>)', body)
+    body = re.sub(r'\((Bread (B\d))\)', lambda m: f'(<a class="xref" href="@@bread-{m.group(2)}@@">{m.group(1)}</a>)', body)
+    return body
+
+
 def flow(items, bk, section, file_href, nav_children):
     out = []
     i = 0
@@ -144,7 +167,7 @@ def flow(items, bk, section, file_href, nav_children):
     while i < len(items):
         b = items[i]
         if b.get('type') == 'table':
-            out.append(table(b)); i += 1; continue
+            out.append(finder_table(b) if section == 'Recipe Finder' else table(b)); i += 1; continue
         if b.get('type') == 'recipe':
             out.append(recipe(b, bk, file_href, nav_children)); i += 1; continue
         if b.get('list'):
@@ -182,7 +205,7 @@ def flow(items, bk, section, file_href, nav_children):
         elif after_heading:
             out.append(f'<p><em>{runs_html(b["runs"])}</em></p>')
         elif b['runs'] and all(x[1] for x in b['runs']) and len(text) < 40:
-            out.append(f'<h4>{esc(text)}</h4>')
+            out.append(f'<p class="label-p">{esc(text)}</p>')
         else:
             out.append(f'<p>{runs_html(b["runs"])}</p>')
         after_heading = False
@@ -228,7 +251,7 @@ def recipe(r, bk, file_href, nav_children):
         if label:
             rows.append((label, body))
         serve += [f'<p><span class="serve-label">{esc(l)}</span> {runs_html(bd).strip()}</p>' for l, bd in rows]
-    img_html = f'<div class="photo"><img src="../{img}" alt="{esc(r["title"])}"/></div>' if img else ''
+    img_html = f'<div class="photo"><img src="../{img}" alt="{esc(r["title"])}: {esc(r["image_brief"])}"/></div>' if img else ''
     return f'''<section class="recipe" id="{a}" epub:type="chapter">
 <p class="kicker">Recipe {num:03d}</p>
 <h2 class="recipe-title">{esc(r['title'])}</h2>
@@ -292,12 +315,15 @@ def build(data, images_dir, out_path):
         label = re.sub(r'\s*Recipes\s+\d+.\d+$', '', txt)
         target = R.toc_target(txt)
         cls = 'part' if b['runs'] and all(x[1] for x in b['runs']) else 'sub'
-        toc.append(f'<p class="{cls}"><a href="{bk.link(target)}">{esc(txt.replace(chr(9), "  "))}</a></p>')
+        toc.append(f'<p class="{cls}"><a href="{bk.link(target)}">{esc(txt.replace(chr(9), " · "))}</a></p>')
     toc.append('</div>')
     pages = [(h, t, ''.join(toc) if b is None else b) for h, t, b in pages]
 
     # resolve recipe links in the index
+    bread_anchor = {re.match(r'b(\d)-', a).group(1): a for a in bk.anchor_file if re.match(r'b\d-', a)}
     def fix(body):
+        body = link_refs(body)
+        body = re.sub(r'@@bread-B(\d)@@', lambda m: bk.link(bread_anchor[m.group(1)]), body)
         return re.sub(r'@@(recipe-\d{3})@@', lambda m: bk.link(m.group(1)), body)
     pages = [(h, t, fix(b)) for h, t, b in pages]
 

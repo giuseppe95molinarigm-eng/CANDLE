@@ -76,7 +76,8 @@ def blocks_html(items, ctx, section=''):
     while i < len(items):
         b = items[i]
         if b.get('type') == 'table':
-            out.append(table_html(b, 'data finder' if section == 'Recipe Finder' else 'data'))
+            cls = 'data finder' if section == 'Recipe Finder' else ('data keep' if len(b['rows']) <= 9 else 'data')
+            out.append(table_html(b, cls))
             i += 1
             continue
         if b.get('type') == 'recipe':
@@ -131,7 +132,7 @@ def blocks_html(items, ctx, section=''):
                 out.append(f'<div class="ix-letter">{esc(text)}</div>')
         elif after_heading and group:
             out.append(f'<p class="sub-meta">{runs_html(b["runs"])}</p>')
-        elif b['runs'] and all(x[1] for x in b['runs']) and len(text) < 40:
+        elif b['runs'] and all(x[1] for x in b['runs']) and len(text) < 40 and section != 'A Note from Margot':
             out.append(f'<h4 class="minor">{esc(text)}</h4>')
         else:
             out.append(f'<p>{runs_html(b["runs"])}</p>')
@@ -242,7 +243,7 @@ def opener(kind, label, title, intro_html, extra='', chapter_string=''):
   <div class="op-inner">
     <div class="op-label">{esc(label)}</div>
     <div class="op-rule"><span></span><i></i><span></span></div>
-    <h1 class="op-title" id="{slug(title)}">{esc(title)}</h1>
+    <h1 class="op-title" id="{slug(title)}">{re.sub(r'(\S+-\S+)', r'<span class="nw">\1</span>', esc(title))}</h1>
     <div class="op-rule"><span></span><i></i><span></span></div>
     <div class="op-intro">{intro_html}</div>
     {extra}
@@ -319,10 +320,17 @@ def section_html(book, s, ctx, recipe_filter=None):
         intro, rest = split_intro(items)
         return (opener('part', f'Part {m.group(1)}', m.group(2), intro,
                        chapter_string=f'<div class="chapter-string" data-chapter="{esc(m.group(2))}"></div>') +
-                f'<div class="flow-section">{blocks_html(rest, ctx, t)}</div>')
+                (f'<div class="flow-section">{blocks_html(rest, ctx, t)}</div>' if rest else ''))
     m = re.match(r'Chapter (\d+): (.*)', t)
     if m:
         intro, rest = split_intro(items)
+        lead = []
+        while rest and rest[0].get('type') == 'p' and (rest[0].get('shd') == 'FBF1E2' or not rest[0].get('text', '').strip()):
+            lead.append(rest.pop(0))
+        if lead and rest and rest[0].get('type') == 'recipe':
+            intro += ''.join(callout(b, 'callout op-note') for b in lead if b.get('text', '').strip())
+        else:
+            rest = lead + rest
         nums = chapter_range(book, t)
         rng = f'<div class="op-range">Recipes {nums[0]}&#8211;{nums[-1]}</div>' if nums else ''
         return (opener('chapter', f'Chapter {m.group(1)}', m.group(2), intro, rng,
@@ -337,6 +345,8 @@ def section_html(book, s, ctx, recipe_filter=None):
 def split_intro(items):
     intro, i = [], 0
     while i < len(items) and items[i].get('type') == 'p' and not items[i].get('style') and not items[i].get('shd') and not items[i].get('list'):
+        if items[i]['text'].rstrip().endswith(':'):
+            break  # a lead-in to a list stays with the list
         if items[i]['text'].strip():
             intro.append(f'<p>{runs_html(items[i]["runs"])}</p>')
         i += 1

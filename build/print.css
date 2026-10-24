@@ -132,7 +132,7 @@ section.contents .sec-title { string-set: none; }
 /* ------------------------------------------------------------------ flow sections */
 section.plain-section { break-before: page; }
 .flow-section, .chapter-body { }
-h2 { font: 700 18pt/1.2 "Playfair"; color: var(--green-800); margin: 0.28in 0 0.08in; break-after: avoid; }
+h2 { font: 700 18pt/1.2 "Playfair"; color: var(--green-800); margin: 0.22in 0 0.07in; break-after: avoid; }
 .flow-section > h2, section.plain-section > h2 { padding-top: 0.06in; border-top: 0.6pt solid var(--gold-pale); }
 h3 { font: 700 10.5pt "Cinzel"; letter-spacing: 0.12em; color: var(--gold); margin: 0.2in 0 0.06in; break-after: avoid; text-transform: uppercase; }
 ol.flow, ul.flow { margin: 0.02in 0 0.12in; padding-left: 0.28in; }
@@ -148,8 +148,8 @@ aside.callout {
 .callout-label { font: 700 8pt "Cinzel"; letter-spacing: 0.14em; color: var(--gold); margin-right: 0.3em; }
 
 table.data { width: 100%; border-collapse: collapse; margin: 0.1in 0 0.16in; font-size: 8.6pt; line-height: 1.35; }
-table.data th { background: var(--green-800); color: var(--gold-pale); font: 700 7.6pt "Cinzel"; letter-spacing: 0.08em; text-align: left; padding: 5pt 6pt; vertical-align: bottom; }
-table.data td { padding: 4.5pt 6pt; border-bottom: 0.5pt solid #e3d6bb; vertical-align: top; }
+table.data th { background: var(--green-800); color: var(--gold-pale); font: 700 7.6pt "Cinzel"; letter-spacing: 0.08em; text-align: left; padding: 4pt 6pt; vertical-align: bottom; }
+table.data td { padding: 3.6pt 6pt; border-bottom: 0.5pt solid #e3d6bb; vertical-align: top; }
 table.data tbody tr:nth-child(even) td { background: #fcf8ef; }
 table.data td:first-child { font-weight: 600; }
 table.data tr { break-inside: avoid; }
@@ -173,7 +173,7 @@ article.recipe { break-before: page; }
   font: 600 7.6pt "Body"; letter-spacing: 0.01em; line-height: 1.55; text-align: center;
 }
 .meta .m { white-space: nowrap; }
-.meta .m + .m::before { content: "\2022"; color: var(--gold-light); margin: 0 0.55em; }
+.meta .m:not(:last-child)::after { content: "\2022"; color: var(--gold-light); margin: 0 0.15em 0 0.5em; }
 
 .intro p { font: italic 10pt/1.45 "Body"; color: #3d332d; margin-bottom: 0.12in; }
 
@@ -223,7 +223,8 @@ dl.serve { display: table; width: 100%; table-layout: fixed; border-collapse: co
 /* ------------------------------------------------------------------ breads, plans, reference */
 .bread { break-inside: avoid; margin-top: 0.2in; }
 .bread + .bread, h2 + .bread { }
-h2.bread-title, h2.plan-title { border-top: none; padding-top: 0; font: 900 19pt/1.15 "Playfair"; }
+h2.bread-title, h2.plan-title { border-top: none; padding-top: 0; font: 900 15pt/1.15 "Playfair"; }
+h2.plan-title { font-size: 19pt; }
 p.sub-meta { font: italic 9.4pt "Body"; color: var(--gold); margin: 0 0 0.08in; }
 ul.bread-ing { list-style: none; padding: 0.08in 0.16in; margin: 0.06in 0 0.12in; background: var(--cream); border-top: 2pt solid var(--gold); column-count: 2; column-gap: 0.3in; font-size: 9.2pt; }
 ul.bread-ing li { margin: 0; padding: 0.03in 0; break-inside: avoid; }
@@ -253,3 +254,8 @@ table.finder td:nth-child(2) { font-weight: 600; }
 .v-2p section.ingredients ul.ing li { break-inside: avoid; }
 .v-2p section.method { break-before: page; }
 .plan.first { break-before: auto; margin-top: 0.25in; }
+
+table.data.keep { break-inside: avoid; }
+.nw { white-space: nowrap; }
+aside.op-note { background: rgba(251, 244, 230, 0.08); border-left-color: var(--gold-light); color: #efe6d2; font-style: normal; text-align: left; margin-top: 0.35in; font-size: 9.5pt; }
+aside.op-note .callout-label { color: var(--gold-light); }
