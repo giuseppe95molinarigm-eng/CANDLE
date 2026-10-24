@@ -46,6 +46,9 @@ for v in ('l', 'm', 's'):
     nxt = {'l': 'm', 'm': 's'}[v]
     for n in over:
         variant[n] = nxt
+for n, c in pages_per_recipe(variant).items():
+    if c > 1:
+        variant[n] = '2p'
 res = pages_per_recipe(variant)
 print('final one-page', sum(1 for c in res.values() if c == 1), 'two-page', [n for n, c in res.items() if c > 1])
 from collections import Counter

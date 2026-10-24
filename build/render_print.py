@@ -208,7 +208,7 @@ def recipe_html(r, ctx):
     num = r['num']
     parts, diet = split_meta(r['meta'])
     img = ctx.image_for(r)
-    meta_html = ''.join(f'<span class="m">{esc(p)}</span>' for p in parts)
+    meta_html = ' '.join(f'<span class="m">{esc(p)}</span>' for p in parts)
     diet_html = ''.join(f'<span class="diet">{esc(d)}</span>' for d in diet)
     intro = ''.join(f'<p>{runs_html(p["runs"])}</p>' for p in r['intro'])
     method = ''.join('<li>' + runs_html(m['runs']) + '</li>' for m in r['method'])
