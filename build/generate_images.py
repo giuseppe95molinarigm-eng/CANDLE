@@ -37,9 +37,22 @@ REF_NOTE = (
 )
 
 
+OVERRIDES = json.load(open(os.path.join(ROOT, 'build/prompt_overrides.json'))) if os.path.exists(
+    os.path.join(ROOT, 'build/prompt_overrides.json')) else {}
+
+
+def shape_hint(recipe):
+    m = recipe['meta']
+    if 'standard candle' in m:
+        return ('Shape: a round cylindrical candle unmolded from a 10 to 12 oz cup, about 3 to 3.5 inches wide and a '
+                'little taller than wide (not a block, not a flat disk). ')
+    return ''
+
+
 def prompt_for(recipe, with_ref):
+    extra = OVERRIDES.get(str(recipe['num']), '')
     p = (f"{recipe['image_brief']} The candle is the '{recipe['title']}', an edible candle made of "
-         f"{ingredient_hint(recipe)}. {STYLE} {SAFETY} {NEGATIVE}")
+         f"{ingredient_hint(recipe)}. {shape_hint(recipe)}{extra} {STYLE} {SAFETY} {NEGATIVE}")
     if with_ref:
         p += ' ' + REF_NOTE
     return p
