@@ -1278,7 +1278,7 @@
      "num": 2,
      "runs": [
       [
-       "Pair It With.",
+       "Pair.",
        true,
        false
       ],
@@ -1289,7 +1289,7 @@
       ]
      ],
      "html": "<strong>Pair It With.</strong> The breads and dippers that suit the candle best.",
-     "text": "Pair It With. The breads and dippers that suit the candle best.",
+     "text": "Pair. The breads and dippers that suit the candle best.",
      "pagebreak": false,
      "list": "ul"
     },
@@ -1300,7 +1300,7 @@
      "num": 2,
      "runs": [
       [
-       "Serve It.",
+       "Serve.",
        true,
        false
       ],
@@ -1311,7 +1311,7 @@
       ]
      ],
      "html": "<strong>Serve It.</strong> How to present it, and what to put around it.",
-     "text": "Serve It. How to present it, and what to put around it.",
+     "text": "Serve. How to present it, and what to put around it.",
      "pagebreak": false,
      "list": "ul"
     },
@@ -1322,7 +1322,7 @@
      "num": 2,
      "runs": [
       [
-       "Make Ahead & Storage.",
+       "Make ahead.",
        true,
        false
       ],
@@ -1333,7 +1333,7 @@
       ]
      ],
      "html": "<strong>Make Ahead &amp; Storage.</strong> How far ahead you can make it, and how to store it before and after lighting.",
-     "text": "Make Ahead & Storage. How far ahead you can make it, and how to store it before and after lighting.",
+     "text": "Make ahead. How far ahead you can make it, and how to store it before and after lighting.",
      "pagebreak": false,
      "list": "ul"
     },
@@ -26795,7 +26795,7 @@
      "type": "recipe",
      "num": 61,
      "title": "Za'atar & Lemon Candle",
-     "meta": "Makes 1 standard candle · Serves 6 to 8  ·  Clean-Burn Core  ·  Active 20 minutes  ·  Chill 2½ hours  ·  Burn about 45 to 60 minutes   V · GF",
+     "meta": "Makes 1 standard candle · Serves 6 to 8  ·  Clean-Burn Core  ·  Active 20 minutes  ·  Chill 2½ hours  ·  Burn about 45 to 60 minutes   V · GF · NF",
      "image_brief": "A butter candle coated in green-brown za'atar, lit, on a hammered copper tray with warm flatbread, hummus, olives and lemon halves; warm Middle Eastern styling.",
      "intro": [
       {
@@ -30265,7 +30265,7 @@
      "type": "recipe",
      "num": 72,
      "title": "Smoky Romesco Candle",
-     "meta": "Makes 1 standard candle · Serves 6 to 8  ·  Clean-Burn Core  ·  Active 20 minutes  ·  Chill 2½ hours  ·  Burn about 45 to 60 minutes   V",
+     "meta": "Makes 1 standard candle · Serves 6 to 8  ·  Clean-Burn Core  ·  Active 20 minutes  ·  Chill 2½ hours  ·  Burn about 45 to 60 minutes   V · GF",
      "image_brief": "A sunset-orange butter candle, lit, on a terracotta plate with grilled spring onions, toasted almonds and grilled bread; sunny Catalan styling.",
      "intro": [
       {
@@ -31033,13 +31033,13 @@
            "num": 2,
            "runs": [
             [
-             "1 teaspoon soy sauce or tamari",
+             "1 teaspoon tamari (or soy sauce if gluten is not a concern)",
              false,
              false
             ]
            ],
            "html": "1 teaspoon soy sauce or tamari",
-           "text": "1 teaspoon soy sauce or tamari",
+           "text": "1 teaspoon tamari (or soy sauce if gluten is not a concern)",
            "pagebreak": false
           },
           {
@@ -39241,7 +39241,7 @@
      "type": "recipe",
      "num": 100,
      "title": "Toasted Coconut & Lime Candle",
-     "meta": "Makes 1 standard candle · Serves 6 to 8  ·  Clean-Burn Core  ·  Active 20 minutes  ·  Chill 2½ hours  ·  Burn about 45 to 60 minutes   V · GF",
+     "meta": "Makes 1 standard candle · Serves 6 to 8  ·  Clean-Burn Core  ·  Active 20 minutes  ·  Chill 2½ hours  ·  Burn about 45 to 60 minutes   V · GF · NF",
      "image_brief": "A pale butter candle coated in golden toasted coconut with lime zest, lit, on a palm-leaf plate with grilled pineapple, mango and lime halves; bright tropical styling.",
      "intro": [
       {
@@ -40644,23 +40644,6 @@
        "num": 110,
        "runs": [
         [
-         "After lighting the finished candle, sprinkle the flaky salt over the top so it melts into the pool.",
-         false,
-         false
-        ]
-       ],
-       "html": "After lighting the finished candle, sprinkle the flaky salt over the top so it melts into the pool.",
-       "text": "After lighting the finished candle, sprinkle the flaky salt over the top so it melts into the pool.",
-       "pagebreak": false,
-       "list": "ol"
-      },
-      {
-       "type": "p",
-       "style": "ListParagraph",
-       "shd": null,
-       "num": 110,
-       "runs": [
-        [
          "Pack around the core.",
          true,
          false
@@ -40717,6 +40700,23 @@
        ],
        "html": "<strong>Serve.</strong> Unmold onto a heatproof plate, board or bread bowl, trim the wick to ¼ in (6 mm) and light. Dip once a pool forms, after 10 to 15 minutes.",
        "text": "Serve. Unmold onto a heatproof plate, board or bread bowl, trim the wick to ¼ in (6 mm) and light. Dip once a pool forms, after 10 to 15 minutes.",
+       "pagebreak": false,
+       "list": "ol"
+      },
+      {
+       "type": "p",
+       "style": "ListParagraph",
+       "shd": null,
+       "num": 110,
+       "runs": [
+        [
+         "After lighting the finished candle, sprinkle the flaky salt over the top so it melts into the pool.",
+         false,
+         false
+        ]
+       ],
+       "html": "After lighting the finished candle, sprinkle the flaky salt over the top so it melts into the pool.",
+       "text": "After lighting the finished candle, sprinkle the flaky salt over the top so it melts into the pool.",
        "pagebreak": false,
        "list": "ol"
       }
@@ -42403,23 +42403,6 @@
        "num": 115,
        "runs": [
         [
-         "If using, press the espresso beans into the outside of the candle once it's unmolded, keeping them low and away from the wick.",
-         false,
-         false
-        ]
-       ],
-       "html": "If using, press the espresso beans into the outside of the candle once it's unmolded, keeping them low and away from the wick.",
-       "text": "If using, press the espresso beans into the outside of the candle once it's unmolded, keeping them low and away from the wick.",
-       "pagebreak": false,
-       "list": "ol"
-      },
-      {
-       "type": "p",
-       "style": "ListParagraph",
-       "shd": null,
-       "num": 115,
-       "runs": [
-        [
          "Pack around the core.",
          true,
          false
@@ -42454,6 +42437,23 @@
        ],
        "html": "<strong>Make the Clean-Burn Core.</strong> Twist out the straw, stand a primed wick in the channel and fill it with clarified butter cooled to 95 to 105°F (35 to 40°C). Chill 1 hour more, until firm throughout.",
        "text": "Make the Clean-Burn Core. Twist out the straw, stand a primed wick in the channel and fill it with clarified butter cooled to 95 to 105°F (35 to 40°C). Chill 1 hour more, until firm throughout.",
+       "pagebreak": false,
+       "list": "ol"
+      },
+      {
+       "type": "p",
+       "style": "ListParagraph",
+       "shd": null,
+       "num": 115,
+       "runs": [
+        [
+         "If using, press the espresso beans into the outside of the candle once it's unmolded, keeping them low and away from the wick.",
+         false,
+         false
+        ]
+       ],
+       "html": "If using, press the espresso beans into the outside of the candle once it's unmolded, keeping them low and away from the wick.",
+       "text": "If using, press the espresso beans into the outside of the candle once it's unmolded, keeping them low and away from the wick.",
        "pagebreak": false,
        "list": "ol"
       },
@@ -43239,7 +43239,7 @@
      "type": "recipe",
      "num": 111,
      "title": "Salted Caramel Chocolate Candle",
-     "meta": "Makes 1 standard candle · Serves 6 to 8  ·  Clean-Burn Core  ·  Active 30 minutes  ·  Chill 2½ hours  ·  Burn about 45 to 60 minutes   V · GF · NF",
+     "meta": "Makes 1 standard candle · Serves 6 to 8  ·  Clean-Burn Core  ·  Active 30 minutes  ·  Chill 3 hours  ·  Burn about 45 to 60 minutes   V · GF · NF",
      "image_brief": "A dark chocolate candle with visible caramel ribbons and flaky salt, lit, on a dark board with apple slices, pretzels and a small pot of caramel; rich, indulgent dessert styling.",
      "intro": [
       {
@@ -43443,13 +43443,13 @@
        "num": 118,
        "runs": [
         [
-         "Dot the chilled caramel over the chocolate butter and fold through 2 or 3 times to make ribbons. Sprinkle the flaky salt over the top of the finished candle after lighting.",
+         "Dot the chilled caramel over the chocolate butter and fold through 2 or 3 times to make ribbons.",
          false,
          false
         ]
        ],
        "html": "Dot the chilled caramel over the chocolate butter and fold through 2 or 3 times to make ribbons. Sprinkle the flaky salt over the top of the finished candle after lighting.",
-       "text": "Dot the chilled caramel over the chocolate butter and fold through 2 or 3 times to make ribbons. Sprinkle the flaky salt over the top of the finished candle after lighting.",
+       "text": "Dot the chilled caramel over the chocolate butter and fold through 2 or 3 times to make ribbons.",
        "pagebreak": false,
        "list": "ol"
       },
@@ -43516,6 +43516,23 @@
        ],
        "html": "<strong>Serve.</strong> Unmold onto a heatproof plate, board or bread bowl, trim the wick to ¼ in (6 mm) and light. Dip once a pool forms, after 10 to 15 minutes.",
        "text": "Serve. Unmold onto a heatproof plate, board or bread bowl, trim the wick to ¼ in (6 mm) and light. Dip once a pool forms, after 10 to 15 minutes.",
+       "pagebreak": false,
+       "list": "ol"
+      },
+      {
+       "type": "p",
+       "style": "ListParagraph",
+       "shd": null,
+       "num": 118,
+       "runs": [
+        [
+         "Sprinkle the flaky salt over the top of the finished candle after lighting.",
+         false,
+         false
+        ]
+       ],
+       "html": "Dot the chilled caramel over the chocolate butter and fold through 2 or 3 times to make ribbons. Sprinkle the flaky salt over the top of the finished candle after lighting.",
+       "text": "Sprinkle the flaky salt over the top of the finished candle after lighting.",
        "pagebreak": false,
        "list": "ol"
       }
@@ -46609,7 +46626,7 @@
      "type": "recipe",
      "num": 121,
      "title": "Smoky Maple Coconut \"Bacon\" Candle",
-     "meta": "Makes 1 standard candle · Serves 6 to 8  ·  Clean-Burn Core  ·  Active 25 minutes  ·  Chill 2½ hours  ·  Burn about 45 to 60 minutes   V · DF · GF",
+     "meta": "Makes 1 standard candle · Serves 6 to 8  ·  Clean-Burn Core  ·  Active 25 minutes  ·  Chill 2½ hours  ·  Burn about 45 to 60 minutes   V · DF · GF · NF",
      "image_brief": "A pale candle studded with crispy dark coconut \"bacon\" pieces, lit, on a brunch table with pancakes, fruit and a jug of maple syrup; bright, modern plant-based brunch styling.",
      "intro": [
       {
@@ -46658,13 +46675,13 @@
            "num": 2,
            "runs": [
             [
-             "1 teaspoon tamari or soy sauce",
+             "1 teaspoon tamari",
              false,
              false
             ]
            ],
            "html": "1 teaspoon tamari or soy sauce",
-           "text": "1 teaspoon tamari or soy sauce",
+           "text": "1 teaspoon tamari",
            "pagebreak": false
           },
           {
@@ -48471,7 +48488,7 @@
      "type": "recipe",
      "num": 127,
      "title": "Golden Turmeric & Ginger Coconut Candle",
-     "meta": "Makes 1 standard candle · Serves 6 to 8  ·  Poured  ·  Active 20 minutes  ·  Chill 3 hours  ·  Burn about 30 to 45 minutes   V · DF · GF",
+     "meta": "Makes 1 standard candle · Serves 6 to 8  ·  Poured  ·  Active 20 minutes  ·  Chill 3 hours  ·  Burn about 30 to 45 minutes   V · DF · GF · NF",
      "image_brief": "A glowing golden-yellow candle, lit, on a brass tray with naan, roasted cauliflower, turmeric root and ginger; warm, vibrant styling.",
      "intro": [
       {
@@ -51771,23 +51788,6 @@
        "num": 143,
        "runs": [
         [
-         "After lighting the finished candle, grate a little extra nutmeg over the top.",
-         false,
-         false
-        ]
-       ],
-       "html": "After lighting the finished candle, grate a little extra nutmeg over the top.",
-       "text": "After lighting the finished candle, grate a little extra nutmeg over the top.",
-       "pagebreak": false,
-       "list": "ol"
-      },
-      {
-       "type": "p",
-       "style": "ListParagraph",
-       "shd": null,
-       "num": 143,
-       "runs": [
-        [
          "Pack around the core.",
          true,
          false
@@ -51844,6 +51844,23 @@
        ],
        "html": "<strong>Serve.</strong> Unmold onto a heatproof plate, board or bread bowl, trim the wick to ¼ in (6 mm) and light. Dip once a pool forms, after 10 to 15 minutes.",
        "text": "Serve. Unmold onto a heatproof plate, board or bread bowl, trim the wick to ¼ in (6 mm) and light. Dip once a pool forms, after 10 to 15 minutes.",
+       "pagebreak": false,
+       "list": "ol"
+      },
+      {
+       "type": "p",
+       "style": "ListParagraph",
+       "shd": null,
+       "num": 143,
+       "runs": [
+        [
+         "After lighting the finished candle, grate a little extra nutmeg over the top.",
+         false,
+         false
+        ]
+       ],
+       "html": "After lighting the finished candle, grate a little extra nutmeg over the top.",
+       "text": "After lighting the finished candle, grate a little extra nutmeg over the top.",
        "pagebreak": false,
        "list": "ol"
       }
@@ -51920,7 +51937,7 @@
      "type": "recipe",
      "num": 137,
      "title": "Rosemary Christmas Tree Candle",
-     "meta": "Makes 1 tree-shaped candle · Serves 8 to 10  ·  Clean-Burn Core (shaped)  ·  Active 40 minutes  ·  Chill 4 hours  ·  Burn about 30 to 45 minutes   V · GF · NF",
+     "meta": "Makes 1 tree-shaped candle · Serves 8 to 10  ·  Clean-Burn Core (shaped)  ·  Active 40 minutes  ·  Chill 3½ hours  ·  Burn about 30 to 45 minutes   V · GF · NF",
      "image_brief": "A cone-shaped butter Christmas tree covered with rosemary sprigs and red cranberry ornaments, lit at its tip, on a cake stand surrounded by a pull-apart bread wreath; magical, festive Christmas styling.",
      "intro": [
       {
@@ -52125,13 +52142,13 @@
        "num": 144,
        "runs": [
         [
-         "Peel away the parchment and set the tree upright on a serving plate. Press small rosemary sprig tips all over the outside, pointing downward like branches, and dot with cranberries. Chill for 30 minutes.",
+         "Peel away the parchment and set the tree upright on a serving plate. Press small rosemary sprig tips all over the outside, pointing downward like branches, keeping the top 1 in (2.5 cm) around the wick bare, and dot with cranberries. Chill for 30 minutes.",
          false,
          false
         ]
        ],
        "html": "Peel away the parchment and set the tree upright on a serving plate. Press small rosemary sprig tips all over the outside, pointing downward like branches, and dot with cranberries. Chill for 30 minutes.",
-       "text": "Peel away the parchment and set the tree upright on a serving plate. Press small rosemary sprig tips all over the outside, pointing downward like branches, and dot with cranberries. Chill for 30 minutes.",
+       "text": "Peel away the parchment and set the tree upright on a serving plate. Press small rosemary sprig tips all over the outside, pointing downward like branches, keeping the top 1 in (2.5 cm) around the wick bare, and dot with cranberries. Chill for 30 minutes.",
        "pagebreak": false,
        "list": "ol"
       },
@@ -53032,23 +53049,6 @@
        "num": 147,
        "runs": [
         [
-         "Once the candle has been unmolded and is still cold, lay the gold leaf against its sides, pressing gently with a soft dry brush. Keep the gold on the lower two-thirds of the candle. Chill for 15 minutes before lighting.",
-         false,
-         false
-        ]
-       ],
-       "html": "Once the candle has been unmolded and is still cold, lay the gold leaf against its sides, pressing gently with a soft dry brush. Keep the gold on the lower two-thirds of the candle. Chill for 15 minutes before lighting.",
-       "text": "Once the candle has been unmolded and is still cold, lay the gold leaf against its sides, pressing gently with a soft dry brush. Keep the gold on the lower two-thirds of the candle. Chill for 15 minutes before lighting.",
-       "pagebreak": false,
-       "list": "ol"
-      },
-      {
-       "type": "p",
-       "style": "ListParagraph",
-       "shd": null,
-       "num": 147,
-       "runs": [
-        [
          "Pack around the core.",
          true,
          false
@@ -53083,6 +53083,23 @@
        ],
        "html": "<strong>Make the Clean-Burn Core.</strong> Twist out the straw, stand a primed wick in the channel and fill it with clarified butter cooled to 95 to 105°F (35 to 40°C). Chill 1 hour more, until firm throughout.",
        "text": "Make the Clean-Burn Core. Twist out the straw, stand a primed wick in the channel and fill it with clarified butter cooled to 95 to 105°F (35 to 40°C). Chill 1 hour more, until firm throughout.",
+       "pagebreak": false,
+       "list": "ol"
+      },
+      {
+       "type": "p",
+       "style": "ListParagraph",
+       "shd": null,
+       "num": 147,
+       "runs": [
+        [
+         "Once the candle has been unmolded and is still cold, lay the gold leaf against its sides, pressing gently with a soft dry brush. Keep the gold on the lower two-thirds of the candle. Chill for 15 minutes before lighting.",
+         false,
+         false
+        ]
+       ],
+       "html": "Once the candle has been unmolded and is still cold, lay the gold leaf against its sides, pressing gently with a soft dry brush. Keep the gold on the lower two-thirds of the candle. Chill for 15 minutes before lighting.",
+       "text": "Once the candle has been unmolded and is still cold, lay the gold leaf against its sides, pressing gently with a soft dry brush. Keep the gold on the lower two-thirds of the candle. Chill for 15 minutes before lighting.",
        "pagebreak": false,
        "list": "ol"
       },
@@ -55328,23 +55345,6 @@
        "num": 154,
        "runs": [
         [
-         "After lighting, dust a little extra chili powder over the top.",
-         false,
-         false
-        ]
-       ],
-       "html": "After lighting, dust a little extra chili powder over the top.",
-       "text": "After lighting, dust a little extra chili powder over the top.",
-       "pagebreak": false,
-       "list": "ol"
-      },
-      {
-       "type": "p",
-       "style": "ListParagraph",
-       "shd": null,
-       "num": 154,
-       "runs": [
-        [
          "Pack around the core.",
          true,
          false
@@ -55401,6 +55401,23 @@
        ],
        "html": "<strong>Serve.</strong> Unmold onto a heatproof plate, board or bread bowl, trim the wick to ¼ in (6 mm) and light. Dip once a pool forms, after 10 to 15 minutes.",
        "text": "Serve. Unmold onto a heatproof plate, board or bread bowl, trim the wick to ¼ in (6 mm) and light. Dip once a pool forms, after 10 to 15 minutes.",
+       "pagebreak": false,
+       "list": "ol"
+      },
+      {
+       "type": "p",
+       "style": "ListParagraph",
+       "shd": null,
+       "num": 154,
+       "runs": [
+        [
+         "After lighting, dust a little extra chili powder over the top.",
+         false,
+         false
+        ]
+       ],
+       "html": "After lighting, dust a little extra chili powder over the top.",
+       "text": "After lighting, dust a little extra chili powder over the top.",
        "pagebreak": false,
        "list": "ol"
       }
@@ -55877,13 +55894,13 @@
            "num": 2,
            "runs": [
             [
-             "¼ teaspoon almond extract (optional)",
+             "¼ teaspoon almond extract (optional; leave out for a nut-free candle)",
              false,
              false
             ]
            ],
            "html": "¼ teaspoon almond extract (optional)",
-           "text": "¼ teaspoon almond extract (optional)",
+           "text": "¼ teaspoon almond extract (optional; leave out for a nut-free candle)",
            "pagebreak": false
           }
          ],
@@ -59538,13 +59555,13 @@
        false
       ],
       [
-       " make the Sage, Cranberry & Orange Candle and the Turkey-Day Pillar; refrigerate. Move frozen candles to the fridge the night before.",
+       " make the Sage, Cranberry & Orange Thanksgiving Candle and the Turkey-Day Herb Butter Candle; refrigerate. Move frozen candles to the fridge the night before.",
        false,
        false
       ]
      ],
      "html": "<strong>3 days before:</strong> make the Sage, Cranberry &amp; Orange Candle and the Turkey-Day Pillar; refrigerate. Move frozen candles to the fridge the night before.",
-     "text": "3 days before: make the Sage, Cranberry & Orange Candle and the Turkey-Day Pillar; refrigerate. Move frozen candles to the fridge the night before.",
+     "text": "3 days before: make the Sage, Cranberry & Orange Thanksgiving Candle and the Turkey-Day Herb Butter Candle; refrigerate. Move frozen candles to the fridge the night before.",
      "pagebreak": false,
      "list": "ul"
     },
@@ -59885,13 +59902,13 @@
        false
       ],
       [
-       " make the cone mold and the Christmas Tree Candle; keep it upright in its glass in the fridge.",
+       " make the cone mold and the Rosemary Christmas Tree Candle; keep it upright in its glass in the fridge.",
        false,
        false
       ]
      ],
      "html": "<strong>The day before:</strong> make the cone mold and the Christmas Tree Candle; keep it upright in its glass in the fridge.",
-     "text": "The day before: make the cone mold and the Christmas Tree Candle; keep it upright in its glass in the fridge.",
+     "text": "The day before: make the cone mold and the Rosemary Christmas Tree Candle; keep it upright in its glass in the fridge.",
      "pagebreak": false,
      "list": "ul"
     },
@@ -59907,13 +59924,13 @@
        false
       ],
       [
-       " make and bake the pull-apart wreath. Decorate the Christmas Tree Candle with rosemary and cranberries.",
+       " make and bake the pull-apart wreath. Decorate the Rosemary Christmas Tree Candle with rosemary and cranberries.",
        false,
        false
       ]
      ],
      "html": "<strong>Christmas Eve afternoon:</strong> make and bake the pull-apart wreath. Decorate the Christmas Tree Candle with rosemary and cranberries.",
-     "text": "Christmas Eve afternoon: make and bake the pull-apart wreath. Decorate the Christmas Tree Candle with rosemary and cranberries.",
+     "text": "Christmas Eve afternoon: make and bake the pull-apart wreath. Decorate the Rosemary Christmas Tree Candle with rosemary and cranberries.",
      "pagebreak": false,
      "list": "ul"
     },
@@ -60188,13 +60205,13 @@
        false
       ],
       [
-       " make the Champagne & Chive Candles, the Cacio e Pepe Candle and the Gold-Leaf Truffle Candle (apply the gold leaf on the day).",
+       " make the Champagne & Chive Candles, the Cacio e Pepe Butter Candle and the Gold-Leaf Truffle Candle (apply the gold leaf on the day).",
        false,
        false
       ]
      ],
      "html": "<strong>2 days before:</strong> make the Champagne &amp; Chive Candles, the Cacio e Pepe Candle and the Gold-Leaf Truffle Candle (apply the gold leaf on the day).",
-     "text": "2 days before: make the Champagne & Chive Candles, the Cacio e Pepe Candle and the Gold-Leaf Truffle Candle (apply the gold leaf on the day).",
+     "text": "2 days before: make the Champagne & Chive Candles, the Cacio e Pepe Butter Candle and the Gold-Leaf Truffle Candle (apply the gold leaf on the day).",
      "pagebreak": false,
      "list": "ul"
     },
@@ -71853,9 +71870,15 @@
          "style": "",
          "shd": null,
          "num": null,
-         "runs": [],
+         "runs": [
+          [
+           "✓",
+           false,
+           false
+          ]
+         ],
          "html": "",
-         "text": "",
+         "text": "✓",
          "pagebreak": false
         }
        ]
@@ -73153,9 +73176,15 @@
          "style": "",
          "shd": null,
          "num": null,
-         "runs": [],
+         "runs": [
+          [
+           "✓",
+           false,
+           false
+          ]
+         ],
          "html": "",
-         "text": "",
+         "text": "✓",
          "pagebreak": false
         }
        ],
@@ -76527,9 +76556,15 @@
          "style": "",
          "shd": null,
          "num": null,
-         "runs": [],
+         "runs": [
+          [
+           "✓",
+           false,
+           false
+          ]
+         ],
          "html": "",
-         "text": "",
+         "text": "✓",
          "pagebreak": false
         }
        ]
@@ -79083,9 +79118,15 @@
          "style": "",
          "shd": null,
          "num": null,
-         "runs": [],
+         "runs": [
+          [
+           "✓",
+           false,
+           false
+          ]
+         ],
          "html": "",
-         "text": "",
+         "text": "✓",
          "pagebreak": false
         }
        ]
@@ -79839,9 +79880,15 @@
          "style": "",
          "shd": null,
          "num": null,
-         "runs": [],
+         "runs": [
+          [
+           "✓",
+           false,
+           false
+          ]
+         ],
          "html": "",
-         "text": "",
+         "text": "✓",
          "pagebreak": false
         }
        ]

@@ -1,6 +1,6 @@
 # The First-Try Edible Candle Cookbook — Rapporto di consegna (formattazione + 150 immagini)
 
-Autrice: Margot Ellery · Lingua: inglese · Data: 24 ottobre 2026
+Autrice: Margot Ellery · Lingua: inglese · Data: 27 ottobre 2026
 
 ## File consegnati (`deliverables/final/`)
 
@@ -8,6 +8,7 @@ Autrice: Margot Ellery · Lingua: inglese · Data: 24 ottobre 2026
 |---|---|
 | `The_First-Try_Edible_Candle_Cookbook_Paperback_Interior.pdf` | Interno paperback, pronto per KDP (99,8 MB) |
 | `The_First-Try_Edible_Candle_Cookbook_Kindle.epub` | Ebook Kindle, EPUB 3 reflowable (9,2 MB) |
+| `corrections_log.md` | Elenco delle correzioni al testo approvate dall'autrice |
 | `image_manifest.csv` | 150 righe: codice ricetta/immagine, file, pixel, dimensione in pagina, ppi effettivi, modello, prompt |
 | `../../images/final/NNN_nome_ricetta.jpg` | Le 150 immagini sorgente (2400 × 1792 px; 5 a 2752 × 1536) |
 
@@ -45,11 +46,11 @@ Autrice: Margot Ellery · Lingua: inglese · Data: 24 ottobre 2026
   - First-Try Tip;
   - Pair / Serve / Make ahead in tre colonne.
 - **Foto adattiva**, scelta in automatico per non rimpicciolire il testo:
-  - grande 4,4 × 3,3 in: 94 ricette;
-  - media 4,0 × 2,85 in: 29;
-  - piccola 3,6 × 2,45 in: 16.
-  - Risultato: **139 ricette su una pagina**.
-  - Le 11 più lunghe (16, 23, 36, 75, 86, 102, 107, 108, 111, 116, 123) usano un layout su due pagine: foto a tutta larghezza e ingredienti nella prima, procedimento nella seconda, con "Continued on next page →" e il titolo ripetuto in testata. Nessun ingrediente o passaggio è diviso tra due pagine.
+  - grande 4,4 × 3,3 in: 108 ricette;
+  - media 4,0 × 2,85 in: 25;
+  - piccola 3,6 × 2,45 in: 7.
+  - Risultato: **140 ricette su una pagina**.
+  - Le 10 più lunghe (16, 23, 36, 75, 86, 102, 107, 111, 116, 123) usano un layout su due pagine: foto a tutta larghezza e ingredienti nella prima, procedimento nella seconda, con "Continued on next page →" e il titolo ripetuto in testata. Nessun ingrediente o passaggio è diviso tra due pagine.
 - **Immagini in stampa:** 2200 px, JPEG di qualità 88, **313–611 ppi effettivi** alla dimensione d'uso (minimo 300).
 - **EPUB:**
   - reflowable, senza colonne né numeri di pagina;
@@ -103,22 +104,24 @@ Autrice: Margot Ellery · Lingua: inglese · Data: 24 ottobre 2026
 5. **Controllo automatico del layout:** 0 overflow, 0 immagini mancanti, 0 duplicati, nessun titolo a meno di 0,45 in dal fondo pagina.
 6. **Coerenza interna:** indice A–Z, Recipe Finder (titoli, metodi, diete) e riferimenti dei Party Plans corrispondono alle ricette.
 
-## Punti aperti / da girare al cliente
+## Correzioni al testo (approvate dall'autrice)
 
-Incongruenze **nel manoscritto approvato**, non modificate come da istruzioni:
+Su indicazione dell'autrice ho corretto direttamente nel PDF e nell'EPUB le incongruenze del manoscritto. L'elenco completo, con il testo prima e dopo, è in `corrections_log.md` (24 interventi). In sintesi:
 
-1. **Etichette dieta.**
-   - Ricette 74 e 121: "GF" con "soy sauce or tamari" (la salsa di soia contiene glutine).
-   - Ricetta 72: la tip dice che è gluten-free, ma manca l'etichetta GF.
-   - Ricette 100, 121, 127: niente "NF" pur senza frutta a guscio, mentre la legenda dice che il cocco non conta. Lo stesso per la 61, a base di sesamo.
-   - Ricetta 149: "NF" con almond extract (facoltativo; la tip lo segnala).
-   - Se il cliente corregge le etichette, vanno aggiornate anche nella Recipe Finder.
-2. **Ricetta 103:** il passo 3 ("After lighting the finished candle, sprinkle the flaky salt…") è collocato prima della formatura.
-3. **Ricetta 28:** "Finish with salt" viene dopo "Serve".
-4. **Ricetta 137:** "Chill 4 hours" nella barra, ma i passaggi sommano 3½ ore. Inoltre i rametti di rosmarino sull'esterno di un albero acceso in cima sono in tensione con la regola "erbe lontane dalla fiamma".
-5. **Plan 1:** nomi abbreviati, "Turkey-Day Pillar" per la ricetta 132 e "Sage, Cranberry & Orange Candle" per la 129.
-6. **How to Use This Book** nomina le sezioni "Pair It With / Serve It / Make Ahead & Storage", mentre le ricette usano "Pair / Serve / Make ahead".
-7. **Descrizioni immagini in tensione con la sicurezza.** Le descrizioni del manoscritto per la 148 (cobwebs) e la 149 (party decorations) contrastano con le regole di sicurezza del libro. Le foto le mostrano solo sullo sfondo, lontane dalla fiamma.
+1. **Etichette dieta:** aggiunto NF alle ricette 61, 100, 121 e 127 (senza frutta a guscio) e GF alla 72, anche nella Recipe Finder.
+2. **Ingredienti:** la 121 usa solo tamari; nella 74 il tamari è l'opzione predefinita; nella 149 l'almond extract è indicato come da omettere per una candela nut-free.
+3. **Ordine dei passaggi:** i passaggi di finitura delle ricette 103, 108, 111, 136, 140 e 147 sono spostati dopo la formatura.
+4. **Tempi di raffreddamento:** 137 da 4 a 3½ ore (somma dei passaggi); 111 da 2½ a 3 ore, stessa convenzione della ricetta 4.
+5. **Sicurezza, ricetta 137:** il rosmarino lascia libera la parte alta vicino allo stoppino (la foto lo mostra già così).
+6. **Nomi:** i Party Plans usano i titoli completi delle ricette; le etichette di "How to Use This Book" coincidono con quelle delle ricette.
+
+Dopo le correzioni ho ripetuto tutti i controlli:
+- etichette dieta e Recipe Finder coerenti su 150/150;
+- nessun altro passaggio fuori ordine;
+- tempi coerenti con i passaggi;
+- nel PDF le uniche differenze dal manoscritto sono le correzioni elencate.
+
+Le descrizioni [IMAGE] della 148 (ragnatele) e della 149 (decorazioni da festa) contrastavano con le regole di sicurezza: nelle foto quegli elementi sono solo sullo sfondo, lontani dalla fiamma.
 
 Altri punti:
 
